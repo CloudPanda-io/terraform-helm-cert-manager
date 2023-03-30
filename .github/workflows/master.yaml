@@ -1,0 +1,17 @@
+# Deploy to terraform registry
+name: Deploy - preprod
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  AWS_REGION: eu-west-1
+
+jobs:
+  run-tests:
+    uses: sumup/os-domains-service/.github/workflows/inc-run-tests.yaml@main
+    secrets:
+      AWS_SECRET_KEY_ID: ${{ secrets.AWS_SECRET_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
